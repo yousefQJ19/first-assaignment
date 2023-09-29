@@ -5,7 +5,7 @@ import Systeam.university;
 public class Main {
    public static void main(String [] args){
 
-       //make a menu---****
+
       university uni=new university();
       uni.addCourse(1234,"math","noor",60);
       uni.addCourse(12345,"oop","ammar",60);
@@ -38,7 +38,8 @@ public class Main {
       System.out.println();
       System.out.println();
       System.out.println();
-      
+
+      System.out.println("<---the general report--->");
       Reports.generalReport(uni);
 
 
