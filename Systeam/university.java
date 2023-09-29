@@ -1,30 +1,45 @@
 package Systeam;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.Scanner;
 
 
-public class universite {
+public class university {
     public Scanner scanner = new Scanner(System.in);
     private Set<Student> students;
+
     private Set <Course> excestedCourses;
 
-    public universite(){
+
+
+
+
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+    public Set<Course> getExcestedCourses() {
+        return excestedCourses;
+    }
+    public university(){
          students=new HashSet<>();
          excestedCourses=new HashSet<>();
     }
-
     public void addStudent(){
             Student studentTemp=new Student();
             System.out.println("Enter the name of student \n");
-            studentTemp.setName(new StringBuilder(scanner.next()));
+            studentTemp.setName(scanner.next());
             System.out.println("Enter student id \n");
             studentTemp.setId(scanner.nextInt());
             System.out.println("Enter student email \n");
-            studentTemp.setEmail(new StringBuilder(scanner.next()));
+            studentTemp.setEmail(scanner.next());
             students.add(studentTemp);
     }
-
+    public void addStudent(int id,String name,String email){
+        Student temp=new Student(id,email,name);
+        students.add(temp);
+    }
     public  void addCourse(){
         Course courseTemp=new Course();
             System.out.println("Enter course code \n");
@@ -37,35 +52,26 @@ public class universite {
             courseTemp.setMaximumCapacity(scanner.nextInt());
             excestedCourses.add(courseTemp);
     }
-
-
+    public  void addCourse(int code,String title,String instructor,int max){
+        Course temp=new Course();
+        temp.setCourseCode(code);
+        temp.setMaximumCapacity(max);
+        temp.setInstructor(instructor);
+        temp.setTitle(title);
+        excestedCourses.add(temp);
+    }
     public void enrollStudent(int studentId,int courseId){
         for (Student stu:students){
             if(stu.getId()==studentId){
-                stu.addCourse(courseId);
+                stu.addCourse(getCourseById(courseId));
             }
         }
     }
-
-
-    public void printStudent(){
-        for(Student temp: students){
-            System.out.println(temp.getName());
-
-                if(temp.getEnrolledCourseList().isEmpty())break;
-                else{
-                    for(Integer courseId:temp.getEnrolledCourseList()){
-                        try {
-                            System.out.println(getCourseById(courseId).getTitle());
-                        }
-                        catch (Exception err){
-                            System.out.println(err.getMessage());
-                        }
-
-                    }
-                }
-
-
+    public void dropStudent(int studentId,int courseId){
+        for (Student stu:students){
+            if(stu.getId()==studentId){
+                stu.removeCourse(courseId);
+            }
         }
     }
     public void printCourses(){
@@ -73,20 +79,18 @@ public class universite {
            System.out.println(temp.getTitle()+"\n");
         }
     }
+    public Course getCourseById(int courseId){
+        Course test=new Course();
+        for(Course cor:this.getExcestedCourses()){
+            if(cor.getCourseCode()==courseId){
 
-    private Course getCourseById(int courseId){
-        for(Course temp:excestedCourses){
-            if(temp.getCourseCode()==courseId){
-                return temp;
+                return cor;
             }
         }
-          return null;
+        return null;
     }
 
 
 
-    public void generateReports(){
-
-    }
 
 }

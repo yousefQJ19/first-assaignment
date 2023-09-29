@@ -8,35 +8,34 @@ public class Student {
     private int id;
     private StringBuilder name;
     private StringBuilder email;
-    private Set<Integer> enrolledCourseList;
+    private Set<Course> enrolledCourseList;
     public Student(){
         id=0;
         name=new StringBuilder();
         enrolledCourseList=new HashSet<>();
         email=new StringBuilder();
     }
-
-
-    public void setName(StringBuilder temp) {
-
-        this.name.append(temp.toString());
-
-    }
-    public void setEmail(StringBuilder temp) {
-        this.name.append(temp.toString());
-    }
-    public Student(int id, StringBuilder email, StringBuilder name, Set<Integer> enrolledCourseList) {
+    public Student(int id, String email, String name) {
         this.id = id;
-        this.email = email;
-        this.enrolledCourseList = enrolledCourseList;
-        this.name=name;
+        this.email = new StringBuilder(email);
+        this.name=new StringBuilder(name);
+        this.enrolledCourseList=new HashSet<>();
+    }
+
+
+    public void setName(String temp) {
+
+        this.name.append(temp);
+
+    }
+    public void setEmail(String temp) {
+        this.name.append(temp);
     }
     public void setId(int id) {
         this.id = id;
     }
-
-    public void addCourse(Integer courseId) {
-        this.enrolledCourseList.add(courseId);
+    public void addCourse(Course course) {
+        this.enrolledCourseList.add(course);
     }
     public int getId() {
         return id;
@@ -44,13 +43,14 @@ public class Student {
     public StringBuilder getEmail() {
         return email;
     }
-    public Set<Integer> getEnrolledCourseList() {
+    public Set<Course> getEnrolledCourseList() {
         return enrolledCourseList;
     }
     public StringBuilder getName() {
         return name;
     }
     public void removeCourse(int courseId){
-        enrolledCourseList.remove(courseId);
+        enrolledCourseList.removeIf(corse -> corse.getCourseCode() == courseId);
+
     }
 }
