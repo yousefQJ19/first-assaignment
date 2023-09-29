@@ -4,6 +4,8 @@ import Systeam.university;
 
 public class Main {
    public static void main(String [] args){
+
+       //make a menu---****
       university uni=new university();
        Reports rep=new Reports();
       uni.addCourse(1234,"math","noor",60);
@@ -28,7 +30,7 @@ public class Main {
       System.out.println();
       System.out.println();
       System.out.println();
-     rep.singleCourseStudents(uni,1234);
+     rep.singleCourseStudents(uni,12028492);
       System.out.println();
       System.out.println();
       System.out.println();

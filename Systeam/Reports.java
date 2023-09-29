@@ -2,7 +2,7 @@ package Systeam;
 
 import java.security.PublicKey;
 
-public  class Reports extends university {
+public  class Reports  {
     private Student getStudentById(int studId,university uni){
         for(Student stu:uni.getStudents()){
             if(stu.getId()==studId){
@@ -46,7 +46,11 @@ public  class Reports extends university {
     }
     public void singleCourseStudents(university uni,int courseId){
 
-                System.out.println(getCourseById(courseId).getTitle()+" students");
+                for(Course cor: uni.getExcestedCourses()){
+                    if(cor.getCourseCode()==courseId){
+                        System.out.println(cor.getTitle()+" students\n");
+                    }
+                }
                 for (Student stu: uni.getStudents()){
                     for(Course cor:stu.getEnrolledCourseList()){
                         if(cor.getCourseCode()==courseId){

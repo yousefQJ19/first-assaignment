@@ -80,17 +80,12 @@ public class university {
         }
     }
     public Course getCourseById(int courseId){
-        Course test=new Course();
+
         for(Course cor:this.getExcestedCourses()){
             if(cor.getCourseCode()==courseId){
-
                 return cor;
             }
         }
         return null;
     }
-
-
-
-
 }
