@@ -16,9 +16,9 @@ public class Course {
               maximumCapacity =60;
 
        }
-       public Course(int coursecode,String courseTitle,String instructore,int max ){
+       public Course(int coursecode,String courseTitle,String instructor,int max ){
               title=new StringBuilder(courseTitle);
-              instructor=new StringBuilder(instructore);
+              this.instructor =new StringBuilder(instructor);
               this.courseCode=coursecode;
               this.maximumCapacity=max;
 

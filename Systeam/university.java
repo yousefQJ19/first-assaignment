@@ -74,11 +74,6 @@ public class university {
             }
         }
     }
-    public void printCourses(){
-        for(Course temp: excestedCourses){
-           System.out.println(temp.getTitle()+"\n");
-        }
-    }
     public Course getCourseById(int courseId){
 
         for(Course cor:this.getExcestedCourses()){
